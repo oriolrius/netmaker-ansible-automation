@@ -13,6 +13,9 @@ on:
       - 'meta/**'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   check-versions:
     name: Check Version Alignment
@@ -96,7 +99,7 @@ jobs:
 
       - name: Build collection
         run: |
-          ansible-galaxy collection build --force
+          ansible-galaxy collection build
           echo "Built collection for version ${{ needs.check-versions.outputs.version }}"
 
       - name: Publish to Ansible Galaxy
