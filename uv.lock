@@ -1213,7 +1213,7 @@ wheels = [
 
 [[package]]
 name = "netmaker-ansible"
-version = "1.0.2"
+version = "1.0.3"
 source = { editable = "." }
 dependencies = [
     { name = "ansible", version = "6.7.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },

@@ -35,6 +35,4 @@
       debug:
         msg:
           - "Networks created successfully!"
-          - "Production: {{ prod_network.resource.netid if prod_network.resource is defined else 'N/A' }}"
-          - "Development: {{ dev_network.resource.netid if dev_network.resource is defined else 'N/A' }}"
           - "IoT: {{ iot_network.resource.netid if iot_network.resource is defined else 'N/A' }}"
