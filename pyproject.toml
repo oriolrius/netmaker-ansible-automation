@@ -1,6 +1,6 @@
 [project]
 name = "netmaker-ansible"
-version = "1.0.1"
+version = "1.0.2"
 description = "Ansible module for managing Netmaker networks"
 requires-python = ">=3.8"
 dependencies = [
