@@ -642,11 +642,51 @@ These configs can be imported into any WireGuard client (phone app, desktop, IoT
 - [Just Command Runner](https://just.systems/)
 - [WireGuard](https://www.wireguard.com/)
 
+## Development
+
+### Releasing a New Version
+
+This project uses GitHub Actions to automatically publish to Ansible Galaxy when versions are updated.
+
+#### Steps to Release:
+
+1. **Bump the version** in both `galaxy.yml` and `pyproject.toml`:
+   ```bash
+   # Using the helper script
+   just bump-version 1.1.0
+
+   # Or manually edit both files
+   ```
+
+2. **Commit and push** the version change:
+   ```bash
+   git add galaxy.yml pyproject.toml
+   git commit -m "Bump version to 1.1.0"
+   git push origin main
+   ```
+
+3. **GitHub Actions will automatically**:
+   - Verify versions match between `galaxy.yml` and `pyproject.toml`
+   - Build the collection
+   - Publish to Ansible Galaxy with `--force` flag
+   - Create a GitHub Release with the collection tarball
+
+#### Version Checking
+
+The workflow ensures version alignment:
+- Compares `galaxy.yml` version with `pyproject.toml` version
+- Fails if versions don't match
+- Only publishes when versions are synchronized
+
+#### Manual Workflow Trigger
+
+You can also manually trigger the workflow from GitHub Actions tab.
+
 ## License
 
 GNU General Public License v3.0+
 
 ## Version
 
-Module Version: 2.1.0
+Collection Version: 1.0.0
 Documentation Updated: 2025-10-16

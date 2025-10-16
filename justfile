@@ -91,6 +91,11 @@ run playbook *args='':
 # DEVELOPMENT & MAINTENANCE
 # ============================================================================
 
+# Bump version in galaxy.yml and pyproject.toml
+# Example: just bump-version 1.1.0
+bump-version version:
+    @./scripts/bump-version.sh {{version}}
+
 # Syntax check all playbooks for errors
 lint:
     @echo "🔍 Checking playbook syntax..."
