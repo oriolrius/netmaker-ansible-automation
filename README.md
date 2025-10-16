@@ -14,20 +14,32 @@ Comprehensive Ansible automation for managing Netmaker networks and external cli
 - Both master key and username/password authentication
 - SSL/TLS certificate validation control
 
-## Quick Start
+## Installation
 
-### 1. Install Dependencies
+### Option 1: Install from Ansible Galaxy (Recommended)
 
 ```bash
+# Install the collection from Ansible Galaxy
+ansible-galaxy collection install oriolrius.netmaker
+```
+
+### Option 2: Install from Source
+
+```bash
+# Clone the repository
+git clone https://github.com/oriolrius/netmaker-ansible-automation.git
+cd netmaker-ansible-automation
+
 # Install UV package manager (if not already installed)
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Install project dependencies
-cd /home/oriol/iotgw-ng/ansible/netmaker
 just install
 ```
 
-### 2. Configure Credentials
+## Quick Start
+
+### 1. Configure Credentials
 
 Create a `.env` file from the example template:
 
@@ -45,7 +57,36 @@ NETMAKER_MASTER_KEY=your_actual_master_key_here
 
 **Important:** The `.env` file contains sensitive credentials and should never be committed to version control. Make sure it's listed in `.gitignore`.
 
-### 3. Run Commands
+### 2. Use in Your Playbooks
+
+```yaml
+---
+- name: Manage Netmaker Infrastructure
+  hosts: localhost
+  tasks:
+    - name: Create IoT network
+      oriolrius.netmaker.netmaker_management:
+        resource_type: network
+        name: iot-network
+        state: present
+        base_url: https://api.netmaker.example.com
+        master_key: "{{ netmaker_master_key }}"
+        addressrange: "10.102.0.0/24"
+        defaultmtu: 1420
+
+    - name: Create IoT device
+      oriolrius.netmaker.netmaker_management:
+        resource_type: extclient
+        name: sensor-01
+        network: iot-network
+        ingress_gateway_id: auto
+        state: present
+        base_url: https://api.netmaker.example.com
+        master_key: "{{ netmaker_master_key }}"
+        enabled: true
+```
+
+### 3. Run Commands (For Source Installation)
 
 ```bash
 # List all available commands
@@ -592,6 +633,8 @@ These configs can be imported into any WireGuard client (phone app, desktop, IoT
 
 ## Resources
 
+- [Ansible Galaxy Collection](https://galaxy.ansible.com/ui/repo/published/oriolrius/netmaker/)
+- [GitHub Repository](https://github.com/oriolrius/netmaker-ansible-automation)
 - [Netmaker Documentation](https://docs.netmaker.io/)
 - [Netmaker API Reference](https://docs.netmaker.io/api.html)
 - [Ansible Module Development](https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_general.html)

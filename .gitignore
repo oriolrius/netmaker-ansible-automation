@@ -17,4 +17,10 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 
+# Environment and secrets
 .env
+
+# Ansible Collection builds
+*.tar.gz
+*.tar
+*.zip
