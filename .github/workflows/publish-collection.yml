@@ -37,15 +37,9 @@ jobs:
       - name: Get version from galaxy.yml
         id: get-version
         run: |
-          python3 << 'EOF'
-          import yaml
-          with open('galaxy.yml', 'r') as f:
-              data = yaml.safe_load(f)
-              version = data['version']
-              print(f"version={version}")
-              with open('$GITHUB_OUTPUT', 'a') as output:
-                  output.write(f"version={version}\n")
-          EOF
+          VERSION=$(python3 -c "import yaml; print(yaml.safe_load(open('galaxy.yml'))['version'])")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Version: $VERSION"
 
       - name: Compare versions
         id: compare
