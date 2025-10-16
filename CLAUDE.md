@@ -5,6 +5,7 @@
 **Project Name:** Netmaker Ansible Collection
 **Type:** Ansible Collection for Infrastructure Automation
 **Purpose:** Comprehensive Ansible automation for managing Netmaker WireGuard mesh networks and external client devices via the Netmaker API
+**Current Version:** 1.0.3 (released 2025-10-16)
 
 ## What This Project Does
 
@@ -324,5 +325,5 @@ just run create_network.yml --check -vvv
 ---
 
 *Last Updated: 2025-10-16*
-*Collection Version: 1.0.2*
+*Collection Version: 1.0.3*
 *Author: Oriol Rius*
