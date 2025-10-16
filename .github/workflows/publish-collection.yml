@@ -116,7 +116,7 @@ jobs:
           fi
 
           echo "Publishing $TARBALL to Ansible Galaxy..."
-          ansible-galaxy collection publish "$TARBALL" --token="$ANSIBLE_GALAXY_TOKEN" --force
+          ansible-galaxy collection publish "$TARBALL" --token="$ANSIBLE_GALAXY_TOKEN"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
