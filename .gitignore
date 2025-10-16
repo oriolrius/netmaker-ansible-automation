@@ -6,9 +6,6 @@ dist/
 *.js
 *.js.map
 
-# Keep examples JS if they're compiled
-!examples/*.js
-
 # Logs
 *.log
 npm-debug.log*
